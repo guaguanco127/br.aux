@@ -39,7 +39,7 @@
         "enablehscroll": 1,
         "enablevscroll": 1,
         "devicewidth": 0.0,
-        "description": "br.aux.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "description": "br.aux.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
         "digest": "",
         "tags": "",
         "style": "",
@@ -60,7 +60,7 @@
                         360.0,
                         33.0
                     ],
-                    "text": "br.aux.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/",
+                    "text": "br.aux.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/",
                     "fontsize": 12.0,
                     "fontname": "Arial"
                 }
@@ -180,7 +180,7 @@
                         180.0,
                         22.0
                     ],
-                    "text": "gen~ @title br.aux.1.0",
+                    "text": "gen~ @title br.aux.1.1",
                     "fontsize": 12.0,
                     "fontname": "Arial",
                     "patcher": {
@@ -309,7 +309,7 @@
                                         520.0
                                     ],
                                     "parameter_enable": 0,
-                                    "code": "// br.aux.1.0 -- aux send for parallel effects\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference and the RNBO host embed this same code\n// in1/in2 audio L/R, in3 level dB -72..6\n// out1/out2 aux L/R\n// Outputs a copy of the input at the level, for an effect. Keep the dry signal on its own path\n// and add the effect's output to it with +~. -72 = true silence, 0 = unity.\n// The level glides over 10 ms in amplitude and lands exactly on its target, so turning it never clicks.\n\nHistory gs(0);\n\ng = gs;\nk = 1 - exp(-1 / max(1, mstosamps(10)));\ndb = clip(in3, -72, 6);\ngoal = (db > -72) ? dbtoa(db) : 0;\ng = g + (goal - g) * k;\n// within -120 dB of the target: land on it\nif (abs(goal - g) < 0.000001) {\n    g = goal;\n}\ngs = g;\n\nout1 = in1 * g;\nout2 = in2 * g;\n",
+                                    "code": "// br.aux.1.1 -- aux send for parallel effects\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference and the RNBO host embed this same code\n// in1/in2 audio L/R, in3 level dB -72..6\n// out1/out2 aux L/R\n// Outputs a copy of the input at the level, for an effect. Keep the dry signal on its own path\n// and add the effect's output to it with +~. -72 = true silence, 0 = unity.\n// The level glides over 10 ms in amplitude and lands exactly on its target, so turning it never clicks.\n\nHistory gs(0);\n\ng = gs;\nk = 1 - exp(-1 / max(1, mstosamps(10)));\ndb = clip(in3, -72, 6);\ngoal = (db > -72) ? dbtoa(db) : 0;\ng = g + (goal - g) * k;\n// within -120 dB of the target: land on it\nif (abs(goal - g) < 0.000001) {\n    g = goal;\n}\ngs = g;\n\nout1 = in1 * g;\nout2 = in2 * g;\n",
                                     "fontsize": 12.0,
                                     "fontname": "Arial"
                                 }
@@ -428,9 +428,67 @@
                         360.0,
                         100.0
                     ],
-                    "text": "Aux send for parallel effects: outputs a copy of the input at the Level (dB), for an effect. Keep the dry signal on its own path and add the effect's output to it with +~. Level starts at -72 (true silence) and glides over 10 ms, so it never clicks.",
+                    "text": "Aux send for parallel effects: outputs a copy of the input at the Level (dB), for an effect. Keep the dry signal on its own path and add the effect's output to it with +~. Level starts at -72 (true silence) and glides over 10 ms, so it never clicks. State outlet (last): every number that changes a control goes out as level <dB>, through [change] so repeats are dropped. Signals feed the gen~ only and are not reported.",
                     "fontsize": 12.0,
                     "fontname": "Arial"
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "outlet",
+                    "id": "obj-1",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "outlettype": [],
+                    "patching_rect": [
+                        165.0,
+                        245.0,
+                        30.0,
+                        30.0
+                    ],
+                    "comment": "State (Message): level <dB>, sent the moment a control changes. Numbers only (signals are not reported). Pick them out by name: [route level]"
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-2",
+                    "numinlets": 1,
+                    "numoutlets": 3,
+                    "outlettype": [
+                        "",
+                        "",
+                        ""
+                    ],
+                    "patching_rect": [
+                        165.0,
+                        175.0,
+                        79.0,
+                        22.0
+                    ],
+                    "text": "change 0.",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "newobj",
+                    "id": "obj-3",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [
+                        ""
+                    ],
+                    "patching_rect": [
+                        165.0,
+                        205.0,
+                        107.0,
+                        22.0
+                    ],
+                    "text": "prepend level",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
                 }
             }
         ],
@@ -491,6 +549,42 @@
                     ],
                     "destination": [
                         "obj-out2",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-in3",
+                        0
+                    ],
+                    "destination": [
+                        "obj-2",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-2",
+                        0
+                    ],
+                    "destination": [
+                        "obj-3",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-3",
+                        0
+                    ],
+                    "destination": [
+                        "obj-1",
                         0
                     ]
                 }

@@ -9,8 +9,9 @@
             "modernui": 1
         },
         "classnamespace": "box",
-        "rect": [ 85.0, 104.0, 1160.0, 620.0 ],
-        "description": "_br.aux.example.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "rect": [ 197.0, 145.0, 1160.0, 620.0 ],
+        "description": "_br.aux.example.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "showontab": 1,
         "boxes": [
             {
                 "box": {
@@ -22,7 +23,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 627.0, 45.0, 426.0, 33.0 ],
-                    "text": "_br.aux.example.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
+                    "text": "_br.aux.example.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
                 }
             },
             {
@@ -60,7 +61,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 15.0, 100.0, 463.0, 74.0 ],
-                    "text": "Four files, same DSP inside:\nbr.aux.1.0 = stereo core, no UI (in: L, R, Level / out: Aux L, Aux R)\nbr.aux.mono.1.0 = mono core (in: In, Level / out: Aux)\nbr.aux.ui.1.0 / br.aux.mono.ui.1.0 = the same with a Level box, for bpatchers\nUI and core have the same inlets and outlets, so either drops in."
+                    "text": "Four files, same DSP inside:\nbr.aux.1.1 = stereo core, no UI (in: L, R, Level / out: Aux L, Aux R)\nbr.aux.mono.1.1 = mono core (in: In, Level / out: Aux)\nbr.aux.ui.1.1 / br.aux.mono.ui.1.1 = the same with a Level box, for bpatchers\nUI and core have the same inlets and outlets, so either drops in."
                 }
             },
             {
@@ -319,7 +320,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 633.0, 232.0, 104.0, 20.0 ],
-                    "text": "A: br.aux.ui.1.0"
+                    "text": "A: br.aux.ui.1.1"
                 }
             },
             {
@@ -333,13 +334,13 @@
                     "lockeddragscroll": 0,
                     "lockedsize": 0,
                     "maxclass": "bpatcher",
-                    "name": "br.aux.ui.1.0.maxpat",
+                    "name": "br.aux.ui.1.1.maxpat",
                     "numinlets": 3,
-                    "numoutlets": 2,
+                    "numoutlets": 3,
                     "offset": [ 0.0, 0.0 ],
-                    "outlettype": [ "signal", "signal" ],
+                    "outlettype": [ "signal", "signal", "" ],
                     "patching_rect": [ 573.0, 228.0, 58.0, 28.0 ],
-                    "varname": "br.aux.ui.1.0",
+                    "varname": "br.aux.ui.1.1",
                     "viewvisibility": 1
                 }
             },
@@ -352,7 +353,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "tapconnect" ],
-                    "patching_rect": [ 573.0, 274.0, 72.0, 22.0 ],
+                    "patching_rect": [ 575.0, 288.0, 72.0, 22.0 ],
                     "text": "tapin~ 1000"
                 }
             },
@@ -365,7 +366,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "signal" ],
-                    "patching_rect": [ 573.0, 304.0, 75.0, 22.0 ],
+                    "patching_rect": [ 575.0, 318.0, 75.0, 22.0 ],
                     "text": "tapout~ 300"
                 }
             },
@@ -378,7 +379,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "tapconnect" ],
-                    "patching_rect": [ 653.0, 274.0, 72.0, 22.0 ],
+                    "patching_rect": [ 655.0, 288.0, 72.0, 22.0 ],
                     "text": "tapin~ 1000"
                 }
             },
@@ -391,7 +392,7 @@
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "signal" ],
-                    "patching_rect": [ 653.0, 304.0, 75.0, 22.0 ],
+                    "patching_rect": [ 655.0, 318.0, 75.0, 22.0 ],
                     "text": "tapout~ 450"
                 }
             },
@@ -403,7 +404,7 @@
                     "maxclass": "comment",
                     "numinlets": 1,
                     "numoutlets": 0,
-                    "patching_rect": [ 733.0, 274.0, 80.0, 20.0 ],
+                    "patching_rect": [ 735.0, 288.0, 80.0, 20.0 ],
                     "text": "echo, wet"
                 }
             },
@@ -442,7 +443,7 @@
                     "numinlets": 1,
                     "numoutlets": 0,
                     "patching_rect": [ 862.0, 90.0, 200.0, 20.0 ],
-                    "text": "B: br.aux.mono.1.0"
+                    "text": "B: br.aux.mono.1.1"
                 }
             },
             {
@@ -490,10 +491,10 @@
                     "id": "obj-b",
                     "maxclass": "newobj",
                     "numinlets": 2,
-                    "numoutlets": 1,
-                    "outlettype": [ "signal" ],
+                    "numoutlets": 2,
+                    "outlettype": [ "signal", "" ],
                     "patching_rect": [ 862.0, 155.0, 150.0, 22.0 ],
-                    "text": "br.aux.mono.1.0"
+                    "text": "br.aux.mono.1.1"
                 }
             },
             {
@@ -621,9 +622,145 @@
                     "patching_rect": [ 503.0, 584.0, 72.0, 22.0 ],
                     "text": "dac~ 1 2"
                 }
+            },
+            {
+                "box": {
+                    "fontname": "Arial",
+                    "fontsize": 12.0,
+                    "id": "obj-1",
+                    "linecount": 3,
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 15.0, 318.0, 470.0, 47.0 ],
+                    "text": "State outlet: every UI and core has a last outlet that sends level <dB> the moment a control changes (numbers only, not signals). Open [p State outlet] (also a tab at the top) to see it read by name with [route level]."
+                }
+            },
+            {
+                "box": {
+                    "fontname": "Arial",
+                    "fontsize": 12.0,
+                    "id": "obj-2",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patcher": {
+                        "fileversion": 1,
+                        "appversion": {
+                            "major": 9,
+                            "minor": 1,
+                            "revision": 4,
+                            "architecture": "x64",
+                            "modernui": 1
+                        },
+                        "classnamespace": "box",
+                        "rect": [ 0.0, 26.0, 1160.0, 594.0 ],
+                        "showontab": 1,
+                        "visible": 1,
+                        "boxes": [
+                            {
+                                "box": {
+                                    "comment": "State from A (UI)",
+                                    "id": "obj-1",
+                                    "index": 1,
+                                    "maxclass": "inlet",
+                                    "numinlets": 0,
+                                    "numoutlets": 1,
+                                    "outlettype": [ "" ],
+                                    "patching_rect": [ 30.0, 95.0, 30.0, 30.0 ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "fontname": "Arial",
+                                    "fontsize": 12.0,
+                                    "id": "obj-2",
+                                    "linecount": 3,
+                                    "maxclass": "comment",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 30.0, 15.0, 600.0, 47.0 ],
+                                    "text": "Each br.aux UI/core sends its state out of its LAST outlet as named messages: level <dB>, the moment a control changes. Read them by NAME with [route level], never by position: names stay put when a tool gains controls."
+                                }
+                            },
+                            {
+                                "box": {
+                                    "fontname": "Arial",
+                                    "fontsize": 12.0,
+                                    "id": "obj-3",
+                                    "maxclass": "comment",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 70.0, 100.0, 58.0, 20.0 ],
+                                    "text": "A (UI)"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "fontname": "Arial",
+                                    "fontsize": 12.0,
+                                    "id": "obj-4",
+                                    "maxclass": "newobj",
+                                    "numinlets": 2,
+                                    "numoutlets": 2,
+                                    "outlettype": [ "", "" ],
+                                    "patching_rect": [ 30.0, 135.0, 93.0, 22.0 ],
+                                    "text": "route level"
+                                }
+                            },
+                            {
+                                "box": {
+                                    "format": 6,
+                                    "id": "obj-5",
+                                    "maxclass": "flonum",
+                                    "numinlets": 1,
+                                    "numoutlets": 2,
+                                    "outlettype": [ "", "bang" ],
+                                    "parameter_enable": 0,
+                                    "patching_rect": [ 30.0, 170.0, 50.0, 22.0 ]
+                                }
+                            },
+                            {
+                                "box": {
+                                    "fontname": "Arial",
+                                    "fontsize": 12.0,
+                                    "id": "obj-6",
+                                    "maxclass": "comment",
+                                    "numinlets": 1,
+                                    "numoutlets": 0,
+                                    "patching_rect": [ 30.0, 195.0, 51.0, 20.0 ],
+                                    "text": "level"
+                                }
+                            }
+                        ],
+                        "lines": [
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-4", 0 ],
+                                    "source": [ "obj-1", 0 ]
+                                }
+                            },
+                            {
+                                "patchline": {
+                                    "destination": [ "obj-5", 0 ],
+                                    "source": [ "obj-4", 0 ]
+                                }
+                            }
+                        ]
+                    },
+                    "patching_rect": [ 722.0, 356.0, 128.0, 22.0 ],
+                    "text": "p \"State outlet\""
+                }
             }
         ],
         "lines": [
+            {
+                "patchline": {
+                    "destination": [ "obj-2", 0 ],
+                    "midpoints": [ 621.5, 262.8026123046875, 731.5, 262.8026123046875 ],
+                    "source": [ "obj-a", 2 ]
+                }
+            },
             {
                 "patchline": {
                     "destination": [ "tapL-in", 0 ],

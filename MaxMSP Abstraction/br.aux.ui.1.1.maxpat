@@ -18,7 +18,7 @@
         "openrectmode": 0,
         "openinpresentation": 1,
         "devicewidth": 58.0,
-        "description": "br.aux.ui.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "description": "br.aux.ui.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
         "boxes": [
             {
                 "box": {
@@ -181,10 +181,11 @@
                     "id": "obj-core",
                     "maxclass": "newobj",
                     "numinlets": 3,
-                    "numoutlets": 2,
+                    "numoutlets": 3,
                     "outlettype": [
                         "signal",
-                        "signal"
+                        "signal",
+                        ""
                     ],
                     "patching_rect": [
                         15.0,
@@ -192,7 +193,7 @@
                         180.0,
                         22.0
                     ],
-                    "text": "br.aux.1.0"
+                    "text": "br.aux.1.1"
                 }
             },
             {
@@ -210,7 +211,7 @@
                         384.0,
                         33.0
                     ],
-                    "text": "br.aux.ui.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
+                    "text": "br.aux.ui.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
                 }
             },
             {
@@ -246,7 +247,7 @@
                         360.0,
                         33.0
                     ],
-                    "text": "[br.aux.1.0] is the real object: open it to see the gen~ inside. You can also patch the core directly and drive Level with a signal."
+                    "text": "[br.aux.1.1] is the real object: open it to see the gen~ inside. You can also patch the core directly and drive Level with a signal."
                 }
             },
             {
@@ -270,7 +271,7 @@
             {
                 "box": {
                     "angle": 270.0,
-                    "annotation": "br.aux.ui.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+                    "annotation": "br.aux.ui.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
                     "background": 1,
                     "bgcolor": [
                         0.0,
@@ -278,7 +279,7 @@
                         0.0,
                         1.0
                     ],
-                    "hint": "br.aux.ui.1.0 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+                    "hint": "br.aux.ui.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
                     "id": "obj-panel",
                     "maxclass": "panel",
                     "mode": 0,
@@ -299,6 +300,40 @@
                     ],
                     "proportion": 0.5,
                     "rounded": 7
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "outlet",
+                    "id": "obj-20",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "outlettype": [],
+                    "patching_rect": [
+                        140.0,
+                        200.0,
+                        30.0,
+                        30.0
+                    ],
+                    "comment": "State (Message): level <dB>, sent the moment a control changes. Numbers only (signals are not reported). Pick them out by name: [route level]"
+                }
+            },
+            {
+                "box": {
+                    "maxclass": "comment",
+                    "id": "obj-21",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "outlettype": [],
+                    "patching_rect": [
+                        15.0,
+                        320.0,
+                        565.0,
+                        47.0
+                    ],
+                    "text": "The last outlet (State) reports the controls as level <dB> the moment they change. It comes from the core, so moving a control, numbers into the inlets and preset recalls all show up. Pick them out by name with [route level].",
+                    "fontname": "Arial",
+                    "fontsize": 12.0
                 }
             }
         ],
@@ -371,6 +406,18 @@
                     ],
                     "destination": [
                         "obj-out2",
+                        0
+                    ]
+                }
+            },
+            {
+                "patchline": {
+                    "source": [
+                        "obj-core",
+                        2
+                    ],
+                    "destination": [
+                        "obj-20",
                         0
                     ]
                 }
