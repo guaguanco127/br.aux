@@ -51,7 +51,7 @@ The effect's output can't go back into br.aux itself: Max would see a signal loo
 | br.aux.ui.1.2 | Stereo, with a Level number box, ready for a [bpatcher] |
 | br.aux.mono.1.2 | Mono, no UI |
 | br.aux.mono.ui.1.2 | Mono, with the same Level box, ready for a [bpatcher] |
-| _br.aux.example.1.2 | Example patch: open this first |
+| _br.aux.example.1.2 | Example patch: open this first (its stereo core tab shows br.aux.1.2, the plain stereo version) |
 
 Each UI version contains its plain version and has the same inlets and audio outlets (plus State last), so either swaps in without rewiring. Open a UI version in patching mode for comments on how it is built.
 
