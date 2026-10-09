@@ -15,7 +15,7 @@
             840.0,
             677.0
         ],
-        "description": "br.aux.rnbo.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
+        "description": "br.aux.rnbo.1.2 -- Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/",
         "boxes": [
             {
                 "box": {
@@ -49,7 +49,7 @@
                         520.0,
                         33.0
                     ],
-                    "text": "br.aux.rnbo.1.1 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
+                    "text": "br.aux.rnbo.1.2 -- Created by Brian Riordan, guaguanco127@gmail.com\nhttps://github.com/guaguanco127/"
                 }
             },
             {
@@ -1070,7 +1070,7 @@
                                                         ],
                                                         "id": "obj-code",
                                                         "fontsize": 12.0,
-                                                        "code": "// br.aux.1.1 -- aux send for parallel effects\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference and the RNBO host embed this same code\n// in1/in2 audio L/R, in3 level dB -72..6\n// out1/out2 aux L/R\n// Outputs a copy of the input at the level, for an effect. Keep the dry signal on its own path\n// and add the effect's output to it with +~. -72 = true silence, 0 = unity.\n// The level glides over 10 ms in amplitude and lands exactly on its target, so turning it never clicks.\n\nHistory gs(0);\n\ng = gs;\nk = 1 - exp(-1 / max(1, mstosamps(10)));\ndb = clip(in3, -72, 6);\ngoal = (db > -72) ? dbtoa(db) : 0;\ng = g + (goal - g) * k;\n// within -120 dB of the target: land on it\nif (abs(goal - g) < 0.000001) {\n    g = goal;\n}\ngs = g;\n\nout1 = in1 * g;\nout2 = in2 * g;\n"
+                                                        "code": "// br.aux.1.2 -- aux send for parallel effects\n// Created by Brian Riordan, guaguanco127@gmail.com -- https://github.com/guaguanco127/\n// MUST MATCH: the core, the UI by reference and the RNBO host embed this same code\n// in1/in2 audio L/R, in3 level dB -72..6\n// out1/out2 aux L/R\n// Outputs a copy of the input at the level, for an effect. Keep the dry signal on its own path\n// and add the effect's output to it with +~. -72 = true silence, 0 = unity.\n// The level glides over 10 ms in amplitude and lands exactly on its target, so turning it never clicks.\n\nHistory gs(0);\n\ng = gs;\nk = 1 - exp(-1 / max(1, mstosamps(10)));\ndb = clip(in3, -72, 6);\ngoal = (db > -72) ? dbtoa(db) : 0;\ng = g + (goal - g) * k;\n// within -120 dB of the target: land on it\nif (abs(goal - g) < 0.000001) {\n    g = goal;\n}\ngs = g;\n\nout1 = in1 * g;\nout2 = in2 * g;\n"
                                                     }
                                                 },
                                                 {
@@ -1539,57 +1539,7 @@
                                         560.0,
                                         61.0
                                     ],
-                                    "text": "gen~ code MUST MATCH br.aux.1.1 (open both: same codebox). Level is the plugin parameter (VST/AU). in 3 sets the same param, so the exported external [br.aux.1.1~] has the same three inlets and two outlets as the abstraction: L, R, Level / Aux L, Aux R."
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-st10",
-                                    "maxclass": "newobj",
-                                    "text": "change",
-                                    "numinlets": 1,
-                                    "numoutlets": 3,
-                                    "outlettype": [
-                                        "",
-                                        "",
-                                        ""
-                                    ],
-                                    "patching_rect": [
-                                        305.0,
-                                        275.0,
-                                        50.0,
-                                        23.0
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-st20",
-                                    "maxclass": "newobj",
-                                    "text": "outport level",
-                                    "numinlets": 1,
-                                    "numoutlets": 0,
-                                    "patching_rect": [
-                                        305.0,
-                                        310.0,
-                                        90.0,
-                                        23.0
-                                    ]
-                                }
-                            },
-                            {
-                                "box": {
-                                    "id": "obj-st3",
-                                    "maxclass": "comment",
-                                    "numinlets": 1,
-                                    "numoutlets": 0,
-                                    "text": "State: each outport sends level <dB> out of the rnbo~ rightmost outlet the moment it changes. Same as the State outlet of the abstractions.",
-                                    "patching_rect": [
-                                        42.0,
-                                        345.0,
-                                        520.0,
-                                        33.0
-                                    ]
+                                    "text": "gen~ code MUST MATCH br.aux.1.2 (open both: same codebox). Level is the plugin parameter (VST/AU). in 3 sets the same param, so the exported external [br.aux.1.2~] has the same three inlets and two outlets as the abstraction: L, R, Level / Aux L, Aux R."
                                 }
                             }
                         ],
@@ -1662,30 +1612,6 @@
                                     ],
                                     "source": [
                                         "sin2",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "source": [
-                                        "pLevel",
-                                        0
-                                    ],
-                                    "destination": [
-                                        "obj-st10",
-                                        0
-                                    ]
-                                }
-                            },
-                            {
-                                "patchline": {
-                                    "source": [
-                                        "obj-st10",
-                                        0
-                                    ],
-                                    "destination": [
-                                        "obj-st20",
                                         0
                                     ]
                                 }
@@ -1783,7 +1709,7 @@
                         336.0,
                         87.0
                     ],
-                    "text": "EXPORT NAME: br.aux.1.1~\nMax External Export asks for a name: keep the ~ at the end. Without it the external has the same name as the abstraction br.aux.1.1, and Max loads whichever it finds first. Audio Plugin Export (VST3/AU): any name; Level is the plugin parameter."
+                    "text": "EXPORT NAME: br.aux.1.2~\nMax External Export asks for a name: keep the ~ at the end. Without it the external has the same name as the abstraction br.aux.1.2, and Max loads whichever it finds first. Audio Plugin Export (VST3/AU): any name; Level is the plugin parameter."
                 }
             },
             {
@@ -1859,59 +1785,6 @@
                         20.0
                     ],
                     "text": "Dry          "
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-st4",
-                    "maxclass": "comment",
-                    "numinlets": 1,
-                    "numoutlets": 0,
-                    "text": "rnbo~ rightmost outlet = State: level <dB> (from the outports inside).",
-                    "patching_rect": [
-                        535.0,
-                        197.0,
-                        443.0,
-                        20.0
-                    ]
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-st5",
-                    "maxclass": "newobj",
-                    "text": "route level",
-                    "numinlets": 2,
-                    "numoutlets": 2,
-                    "outlettype": [
-                        "",
-                        ""
-                    ],
-                    "patching_rect": [
-                        350.0,
-                        250.0,
-                        85.0,
-                        22.0
-                    ]
-                }
-            },
-            {
-                "box": {
-                    "id": "obj-st60",
-                    "maxclass": "flonum",
-                    "numinlets": 1,
-                    "numoutlets": 2,
-                    "outlettype": [
-                        "",
-                        "bang"
-                    ],
-                    "parameter_enable": 0,
-                    "patching_rect": [
-                        350.0,
-                        282.0,
-                        50.0,
-                        22.0
-                    ]
                 }
             }
         ],
@@ -2047,30 +1920,6 @@
                     "source": [
                         "obj-9",
                         1
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-7",
-                        2
-                    ],
-                    "destination": [
-                        "obj-st5",
-                        0
-                    ]
-                }
-            },
-            {
-                "patchline": {
-                    "source": [
-                        "obj-st5",
-                        0
-                    ],
-                    "destination": [
-                        "obj-st60",
-                        0
                     ]
                 }
             }
